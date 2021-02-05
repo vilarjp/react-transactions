@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components';
 
-export const TextAndNumberWrapper = styled.div``;
+import * as DotsLoadingStyles from '../../components/DotsLoading/styles';
+
+export const TextAndNumberWrapper = styled.div`
+  ${({ theme }) => css`
+    ${DotsLoadingStyles.LoadingWrapper} {
+      margin-left: ${theme.spacings.xlarge};
+    }
+  `}
+`;
 
 export const Text = styled.p`
   ${({ theme }) => css`

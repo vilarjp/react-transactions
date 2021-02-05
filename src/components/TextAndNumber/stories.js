@@ -15,6 +15,9 @@ export default {
     isMoney: {
       type: 'boolean',
     },
+    isLoading: {
+      type: 'boolean',
+    },
   },
 };
 

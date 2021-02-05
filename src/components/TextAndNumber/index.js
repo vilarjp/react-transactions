@@ -2,9 +2,10 @@ import React from 'react';
 
 import { formatMoney } from '../../utils/formatters';
 
+import DotsLoading from '../DotsLoading';
 import * as SC from './styles';
 
-function TextAndNumber({ text, number, isMoney = false }) {
+function TextAndNumber({ text, number, isMoney = false, isLoading = false }) {
   const renderNumberValue = () => {
     if (isMoney) {
       return formatMoney(number);
@@ -16,7 +17,11 @@ function TextAndNumber({ text, number, isMoney = false }) {
   return (
     <SC.TextAndNumberWrapper>
       <SC.Text>{text}</SC.Text>
-      <SC.NumberValue>{renderNumberValue()}</SC.NumberValue>
+      {isLoading ? (
+        <DotsLoading />
+      ) : (
+        <SC.NumberValue>{renderNumberValue()}</SC.NumberValue>
+      )}
     </SC.TextAndNumberWrapper>
   );
 }
