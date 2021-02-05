@@ -31,6 +31,7 @@ export default {
     small: '1rem',
     medium: '1.5rem',
     large: '2rem',
+    xlarge: '2.5rem',
   },
   sizes: {
     small: '2rem',
