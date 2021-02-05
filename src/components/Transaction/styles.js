@@ -5,7 +5,7 @@ export const TransactionWrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    padding: ${theme.spacings.small};
+    padding: ${theme.spacings.medium};
     border-bottom: 1px solid ${theme.colors.lightGray};
     background-color: ${theme.colors.white};
   `}
