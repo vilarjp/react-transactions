@@ -3,7 +3,7 @@ import React from 'react';
 import { ErrorWrapper } from './styles';
 
 function ErrorMessage({ children }) {
-  return <ErrorWrapper>{children}</ErrorWrapper>;
+  return <ErrorWrapper role="alert">{children}</ErrorWrapper>;
 }
 
 export default ErrorMessage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Main } from '../../components/Main';
 import TextAndNumber from '../../components/TextAndNumber';
@@ -54,7 +55,7 @@ const TransactionsList = () => {
               ),
             )}
             {!transactions.length && (
-              <p style={{ textAlign: 'center' }}>
+              <p style={{ textAlign: 'center' }} role="status">
                 Nenhuma transação encontrada
               </p>
             )}
@@ -68,9 +69,11 @@ const TransactionsList = () => {
         )}
 
         <SC.TransactionsFixedContainer>
-          <Button fullWidth icon={<IconPlus />}>
-            Criar transação
-          </Button>
+          <Link to="/create">
+            <Button fullWidth icon={<IconPlus />}>
+              Criar transação
+            </Button>
+          </Link>
         </SC.TransactionsFixedContainer>
       </SC.SectionTransactionsList>
     </Main>

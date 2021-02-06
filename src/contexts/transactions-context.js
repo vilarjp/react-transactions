@@ -32,20 +32,12 @@ const TransactionsProvider = ({ children }) => {
   const value = useMemo(
     () => ({
       transactions,
-      getTransactions,
       getTotalAmount,
       isLoading,
       isSuccess,
       isError,
     }),
-    [
-      transactions,
-      getTransactions,
-      getTotalAmount,
-      isLoading,
-      isSuccess,
-      isError,
-    ],
+    [transactions, getTotalAmount, isLoading, isSuccess, isError],
   );
 
   return (

@@ -4,3 +4,16 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
+
+beforeAll(() => {
+  jest.spyOn(window, 'fetch').mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: jest.fn(),
+    }),
+  );
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
