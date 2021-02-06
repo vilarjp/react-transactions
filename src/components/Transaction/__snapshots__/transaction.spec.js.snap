@@ -1,7 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[
-  `<Transaction /> should render the transaction with correct values 1`
+  `<Transaction /> should render the paid transaction with correct values 1`
+] = `
+.c0 {
+  color: #72737A;
+  font-size: 1.4rem;
+}
+
+<span
+  class="c0"
+>
+  Paga
+</span>
+`;
+
+exports[
+  `<Transaction /> should render the paid transaction with correct values 2`
 ] = `
 .c0 {
   color: #454550;
@@ -15,7 +30,7 @@ exports[
 `;
 
 exports[
-  `<Transaction /> should render the transaction with correct values 2`
+  `<Transaction /> should render the paid transaction with correct values 3`
 ] = `
 .c0 {
   color: #2B2B2B;
@@ -26,5 +41,20 @@ exports[
   class="c0"
 >
   R$123,456,789.00
+</span>
+`;
+
+exports[
+  `<Transaction /> should render the refused transaction with correct values 1`
+] = `
+.c0 {
+  color: #72737A;
+  font-size: 1.4rem;
+}
+
+<span
+  class="c0"
+>
+  Recusada
 </span>
 `;

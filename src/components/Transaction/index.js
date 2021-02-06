@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { formatMoney, formatDate } from '../../utils/formatters';
+import { statusList } from './status';
 
 import * as SC from './styles';
 
@@ -9,7 +10,7 @@ function Transaction({ user, status, date, amount }) {
     <SC.TransactionWrapper>
       <SC.TransactionTitle>
         <SC.TransactionUser>{user}</SC.TransactionUser>
-        <SC.TransactionStatus>{status}</SC.TransactionStatus>
+        <SC.TransactionStatus>{statusList[status] ?? '-'}</SC.TransactionStatus>
       </SC.TransactionTitle>
       <SC.TransactionInfo>
         <SC.TransactionDate>{formatDate(date)}</SC.TransactionDate>
