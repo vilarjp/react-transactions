@@ -64,5 +64,14 @@
       "yarn lint --fix",
       "yarn test --findRelatedTests --bail"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/stories.js",
+      "!src/*",
+      "!src/styles/*",
+      "!src/routes/*"
+    ]
   }
 }
