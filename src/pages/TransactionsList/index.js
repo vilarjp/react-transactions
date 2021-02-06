@@ -6,98 +6,67 @@ import Transaction from '../../components/Transaction';
 import IconPlus from '../../components/IconPlus';
 import Button from '../../components/Button';
 import Spinner from '../../components/Spinner';
+import ErrorMessage from '../../components/ErrorMessage';
+
+import { useTransactions } from '../../contexts/transactions-context';
 
 import * as SC from './styles';
 
 const TransactionsList = () => {
+  const {
+    transactions,
+    getTotalAmount,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useTransactions();
+
   return (
     <Main>
       <SC.SectionTransactionsList>
         <SC.TransactionsContainer>
-          <TextAndNumber text={'Número de transações'} number={'10.3030'} />
-          <TextAndNumber text={'Valor total'} number={'24.339,46'} />
+          <TextAndNumber
+            text={'Número de transações'}
+            number={transactions?.length ?? 0}
+            isLoading={isLoading}
+          />
+          <TextAndNumber
+            text={'Valor total'}
+            number={getTotalAmount ?? 0}
+            isMoney={true}
+            isLoading={isLoading}
+          />
         </SC.TransactionsContainer>
-        <SC.TransactionsList>
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-          <Transaction
-            user={'João S Silva'}
-            status={'Recusada'}
-            date={'2010-10-10T13:30:56.451Z'}
-            amount={'100'}
-          />
-        </SC.TransactionsList>
-        <Spinner />
+
+        {isLoading && <Spinner />}
+
+        {isSuccess && (
+          <SC.TransactionsList>
+            {transactions.map(
+              ({ credit_card_holder_name, status, date, amount, id }) => (
+                <Transaction
+                  user={credit_card_holder_name}
+                  status={status}
+                  date={date}
+                  amount={amount}
+                  key={id}
+                />
+              ),
+            )}
+            {!transactions.length && (
+              <p style={{ textAlign: 'center' }}>
+                Nenhuma transação encontrada
+              </p>
+            )}
+          </SC.TransactionsList>
+        )}
+
+        {isError && (
+          <ErrorMessage>
+            Ocorreu um erro ao buscar as informações :(
+          </ErrorMessage>
+        )}
+
         <SC.TransactionsFixedContainer>
           <Button fullWidth icon={<IconPlus />}>
             Criar transação
