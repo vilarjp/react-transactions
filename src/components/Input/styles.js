@@ -1,11 +1,18 @@
 import styled, { css } from 'styled-components';
 
 export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-  position: relative;
+    position: relative;
+
+    small {
+      margin-top: calc(${theme.spacings.xsmall} / 2);
+      color: ${theme.colors.purple};
+    }
+  `}
 `;
 
 export const InputLabel = styled.label`
