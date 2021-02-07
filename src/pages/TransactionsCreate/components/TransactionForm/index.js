@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import ErrorMessage from '../../../../components/ErrorMessage';
 import Input from '../../../../components/Input';
@@ -6,24 +7,17 @@ import Button from '../../../../components/Button';
 
 import * as SC from './styles';
 
-function TransactionForm() {
+function TransactionForm({ onSubmit, isLoading, isError }) {
   const [state, setState] = useState({
-    name: '',
-    cpf: '',
-    cardNumber: '',
-    cardExpiration: '',
-    cvv: '',
-    value: '',
+    credit_card_holder_name: '',
+    buyer_document: '',
+    credit_card_number: '',
+    credit_card_expiration_date: '',
+    credit_card_cvv: '',
+    amount: '',
   });
-
-  const [errors, setErrors] = useState({
-    nameError: '',
-    cpfError: '',
-    cardNumberError: '',
-    cardExpirationError: '',
-    cvvError: '',
-    valueError: '',
-  });
+  const [errors, setErrors] = useState({});
+  const { push } = useHistory();
 
   const validateForm = () => {
     let isValid = true;
@@ -37,7 +31,7 @@ function TransactionForm() {
         isValid = false;
         setErrors((prevState) => ({
           ...prevState,
-          [errorKeyName]: 'Preencha o campo',
+          [errorKeyName]: 'Campo obrigatório',
         }));
       } else {
         setErrors((prevState) => ({
@@ -50,77 +44,111 @@ function TransactionForm() {
     return isValid;
   };
 
-  const handleSubmit = (event) => {
+  const formatValuesBeforeSubmit = async () => {
+    const { credit_card_holder_name, ...valuesToFormat } = state;
+
+    Object.entries(valuesToFormat).forEach(([key, value]) => {
+      valuesToFormat[key] = value.replace(/\D/g, '');
+    });
+
+    const response = await onSubmit({
+      ...valuesToFormat,
+      credit_card_holder_name,
+    });
+
+    if (response) push('/');
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(validateForm());
+
+    if (validateForm()) {
+      formatValuesBeforeSubmit();
+    }
   };
 
   return (
     <SC.FormWrapper onSubmit={handleSubmit}>
-      <ErrorMessage>
-        Ocorreu um erro ao criar a transação :( por favor tente novamente
-      </ErrorMessage>
-      <div>
+      <SC.FormContent>
         <Input
-          initialValue={state.name}
-          onInput={(value) =>
-            setState((prevState) => ({ ...prevState, name: value }))
-          }
-          placeholder={'Nome da pessoa compradora'}
-          name={'name'}
-          error={errors.nameError}
-        />
-        <Input
-          initialValue={state.cpf}
-          onInput={(value) =>
-            setState((prevState) => ({ ...prevState, cpf: value }))
-          }
-          placeholder={'CPF'}
-          mask={'CPF'}
-          error={errors.cpfError}
-        />
-        <Input
-          initialValue={state.cardNumber}
-          onInput={(value) =>
-            setState((prevState) => ({ ...prevState, cardNumber: value }))
-          }
-          placeholder={'N° do cartão'}
-          mask={'creditCard'}
-          error={errors.cardNumberError}
-        />
-        <SC.FormCreditCard>
-          <Input
-            initialValue={state.cardExpiration}
-            onInput={(value) =>
-              setState((prevState) => ({ ...prevState, cardExpiration: value }))
-            }
-            placeholder={'Data de expiração'}
-            mask={'cardExpiration'}
-            error={errors.cardExpirationError}
-          />
-          <Input
-            initialValue={state.cvv}
-            onInput={(value) =>
-              setState((prevState) => ({ ...prevState, cvv: value }))
-            }
-            placeholder={'CVV'}
-            mask={'CVV'}
-            error={errors.cvvError}
-          />
-        </SC.FormCreditCard>
-        <Input
-          initialValue={state.value}
+          initialValue={state.credit_card_holder_name}
           onInput={(value) =>
             setState((prevState) => ({
               ...prevState,
-              value: value,
+              credit_card_holder_name: value,
+            }))
+          }
+          placeholder={'Nome da pessoa compradora'}
+          error={errors.credit_card_holder_nameError}
+        />
+        <Input
+          initialValue={state.buyer_document}
+          onInput={(value) =>
+            setState((prevState) => ({ ...prevState, buyer_document: value }))
+          }
+          placeholder={'CPF'}
+          mask={'CPF'}
+          error={errors.buyer_documentError}
+        />
+        <Input
+          initialValue={state.credit_card_number}
+          onInput={(value) =>
+            setState((prevState) => ({
+              ...prevState,
+              credit_card_number: value,
+            }))
+          }
+          placeholder={'N° do cartão'}
+          mask={'creditCard'}
+          error={errors.credit_card_numberError}
+        />
+        <SC.FormCreditCard>
+          <Input
+            initialValue={state.credit_card_expiration_date}
+            onInput={(value) =>
+              setState((prevState) => ({
+                ...prevState,
+                credit_card_expiration_date: value,
+              }))
+            }
+            placeholder={'Data de expiração'}
+            mask={'cardExpiration'}
+            error={errors.credit_card_expiration_dateError}
+          />
+          <Input
+            initialValue={state.credit_card_cvv}
+            onInput={(value) =>
+              setState((prevState) => ({
+                ...prevState,
+                credit_card_cvv: value,
+              }))
+            }
+            placeholder={'CVV'}
+            mask={'CVV'}
+            error={errors.credit_card_cvvError}
+          />
+        </SC.FormCreditCard>
+        <Input
+          initialValue={state.amount}
+          onInput={(value) =>
+            setState((prevState) => ({
+              ...prevState,
+              amount: value,
             }))
           }
           placeholder={'Valor da transação'}
-          error={errors.valueError}
+          error={errors.amountError}
         />
-      </div>
-      <Button fullWidth>Criar transação</Button>
+        {isError && (
+          <ErrorMessage>
+            Ops... ocorreu um erro no nosso sistema :( tente recarregar a pagina
+            ou criar a transação novamente
+          </ErrorMessage>
+        )}
+      </SC.FormContent>
+      <Button fullWidth disabled={isLoading}>
+        {isLoading ? 'Carregando...' : 'Criar transação'}
+      </Button>
     </SC.FormWrapper>
   );
 }

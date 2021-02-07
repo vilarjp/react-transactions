@@ -52,10 +52,10 @@ export function formatCreditCard(creditCard) {
 }
 
 export function formatCardExpiration(cardExpiration) {
-  if (cardExpiration.length > 7) return cardExpiration.slice(0, 7);
+  if (cardExpiration.length > 5) return cardExpiration.slice(0, 5);
 
   if (cardExpiration.length === 3)
-    cardExpiration = cardExpiration.replace(/(\d{2})(\d)/, '$1/');
+    cardExpiration = cardExpiration.replace(/(\d{2})(\d)/, '$1/$2');
 
   return cardExpiration;
 }

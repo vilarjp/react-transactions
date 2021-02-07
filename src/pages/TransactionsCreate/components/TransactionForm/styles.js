@@ -13,8 +13,6 @@ export const FormWrapper = styled.form`
     justify-content: space-between;
 
     ${ErrorMessageStyles.ErrorWrapper} {
-      position: absolute;
-      top: 5%;
       text-align: left;
     }
 
@@ -27,6 +25,8 @@ export const FormWrapper = styled.form`
     }
   `}
 `;
+
+export const FormContent = styled.div``;
 
 export const FormCreditCard = styled.div`
   ${({ theme }) => css`
