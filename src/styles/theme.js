@@ -16,6 +16,7 @@ export default {
   },
   colors: {
     purple: '#3F2787',
+    darkPurple: '#1D1647',
     green: '#65A300',
     lightGray: '#F2F2F3',
     gray: '#8B8B92',
@@ -28,17 +29,21 @@ export default {
     shadow: 'rgba(112, 82, 200, 0.3)',
   },
   spacings: {
+    xsmall: '0.5rem',
+    almostSmall: '0.8rem',
     small: '1rem',
     medium: '1.5rem',
     large: '2rem',
     xlarge: '2.5rem',
+    ultraLarge: '9rem',
   },
   sizes: {
     small: '2rem',
     medium: '4.8rem',
   },
   transition: {
-    default: '0.3s ease-in-out',
-    fast: '0.1s ease-in-out',
+    fast: '0.1s ease',
+    default: '0.2s ease',
+    slow: '0.3s ease',
   },
 };
