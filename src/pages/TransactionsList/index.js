@@ -43,7 +43,7 @@ const TransactionsList = () => {
 
         {isSuccess && (
           <SC.TransactionsList>
-            {transactions.map(
+            {transactions?.map(
               ({ credit_card_holder_name, status, date, amount, id }) => (
                 <Transaction
                   user={credit_card_holder_name}
@@ -54,7 +54,7 @@ const TransactionsList = () => {
                 />
               ),
             )}
-            {!transactions.length && (
+            {!transactions?.length && (
               <p style={{ textAlign: 'center' }} role="status">
                 Nenhuma transação encontrada
               </p>
@@ -64,7 +64,7 @@ const TransactionsList = () => {
 
         {isError && (
           <ErrorMessage>
-            Ocorreu um erro ao buscar as informações :(
+            Ops... ocorreu um erro no nosso sistema :( tente recarregar a pagina
           </ErrorMessage>
         )}
 

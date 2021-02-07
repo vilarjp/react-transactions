@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, userEvent } from '../../test/render';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 import {
   useTransactions,
@@ -18,14 +18,28 @@ jest.mock('../../hooks/useAsync.js', () => ({
   useAsync: () => mockedHook,
 }));
 
+const renderPage = async () => {
+  render(<TransactionsList />, { renderWithAppProviders: true });
+
+  const { result } = renderHook(() => useTransactions(), {
+    wrapper: TransactionsProvider,
+  });
+
+  await act(async () => {
+    await result.current.getTransactions();
+  });
+
+  return { result };
+};
+
 describe('<TransactionsList />', () => {
-  it('should render loading state on start', () => {
+  it('should render loading state on start', async () => {
     mockedHook = {
       ...mockedHook,
       isLoading: true,
     };
 
-    render(<TransactionsList />, { renderWithAppProviders: true });
+    await renderPage();
 
     const loadingElements = screen.getAllByLabelText(/loading/i);
 
@@ -34,12 +48,12 @@ describe('<TransactionsList />', () => {
     });
   });
 
-  it('should show all transactions infos', () => {
+  it('should show all transactions infos', async () => {
     mockedHook = {
       ...mockedHook,
       isLoading: false,
       isSuccess: true,
-      data: [
+      run: () => [
         {
           amount: 10000,
           buyer_document: '12345678912',
@@ -76,18 +90,14 @@ describe('<TransactionsList />', () => {
       ],
     };
 
-    render(<TransactionsList />, { renderWithAppProviders: true });
+    const { result } = await renderPage();
 
     const transactionsLength = screen.getByText('Número de transações')
       .nextSibling;
 
     expect(transactionsLength.textContent).toBe(
-      mockedHook.data.length.toString(),
+      mockedHook.run().length.toString(),
     );
-
-    const { result } = renderHook(() => useTransactions(), {
-      wrapper: TransactionsProvider,
-    });
 
     const { getTotalAmount } = result.current;
     const transactionsAmount = screen.getByText('Valor total').nextSibling;
@@ -95,18 +105,18 @@ describe('<TransactionsList />', () => {
     expect(transactionsAmount.textContent).toBe(formatMoney(getTotalAmount));
 
     const transactionsCard = screen.getAllByRole('transaction');
-    expect(transactionsCard).toHaveLength(mockedHook.data.length);
+    expect(transactionsCard).toHaveLength(mockedHook.run().length);
   });
 
-  it('should show correct status message when there is no transactions', () => {
+  it('should show correct status message when there is no transactions', async () => {
     mockedHook = {
       ...mockedHook,
       isLoading: false,
       isSuccess: true,
-      data: [],
+      run: () => [],
     };
 
-    render(<TransactionsList />, { renderWithAppProviders: true });
+    await renderPage();
 
     expect(screen.getByRole('status')).toMatchInlineSnapshot(`
       <p
@@ -118,14 +128,14 @@ describe('<TransactionsList />', () => {
     `);
   });
 
-  it('should show error message when api request fails', () => {
+  it('should show error message when api request fails', async () => {
     mockedHook = {
       ...mockedHook,
       isLoading: false,
       isError: true,
     };
 
-    render(<TransactionsList />, { renderWithAppProviders: true });
+    await renderPage();
 
     expect(screen.getByRole('alert')).toMatchInlineSnapshot(`
       .c0 {
@@ -138,13 +148,13 @@ describe('<TransactionsList />', () => {
         class="c0"
         role="alert"
       >
-        Ocorreu um erro ao buscar as informações :(
+        Ops... ocorreu um erro no nosso sistema :( tente recarregar a pagina
       </div>
     `);
   });
 
-  it('should go to TransactionCreate page on button click', () => {
-    render(<TransactionsList />, { renderWithAppProviders: true });
+  it('should go to TransactionCreate page on button click', async () => {
+    await renderPage();
 
     const createTransactionButton = screen.getByRole('button', {
       name: /criar transação/i,
