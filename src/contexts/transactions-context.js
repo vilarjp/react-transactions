@@ -1,33 +1,50 @@
 import React, {
   createContext,
+  useState,
   useCallback,
   useEffect,
   useMemo,
   useContext,
 } from 'react';
 
-import { httpClient } from '../services/http-client';
+import { list, create } from '../services/transaction';
 import { useAsync } from '../hooks/useAsync';
 
 const TransactionsContext = createContext();
 
 const TransactionsProvider = ({ children }) => {
-  const { data: transactions, isLoading, isSuccess, isError, run } = useAsync();
+  const [transactions, setTransactions] = useState(null);
+  const { isLoading, isSuccess, isError, run } = useAsync();
 
-  const getTransactions = useCallback(() => {
-    run(httpClient('transactions'));
+  const createTransaction = useCallback(
+    async (transaction) => {
+      const response = await run(create(transaction));
+      setTransactions((prevState) => [...prevState, response]);
+      return response;
+    },
+    [run],
+  );
+
+  const getTransactions = useCallback(async () => {
+    const response = await run(list());
+    setTransactions(response);
   }, [run]);
-
-  useEffect(() => {
-    getTransactions();
-  }, [getTransactions]);
 
   const getTotalAmount = useMemo(() => {
     return transactions?.reduce((total, transaction) => {
-      if (transaction.status === 'paid') return (total += transaction.amount);
+      if (transaction.status === 'paid')
+        return (total += parseInt(transaction.amount));
       return total;
     }, 0);
   }, [transactions]);
+
+  useEffect(() => {
+    (async () => {
+      if (!transactions) {
+        await getTransactions();
+      }
+    })();
+  }, [getTransactions, transactions]);
 
   const value = useMemo(
     () => ({
@@ -36,8 +53,18 @@ const TransactionsProvider = ({ children }) => {
       isLoading,
       isSuccess,
       isError,
+      createTransaction,
+      getTransactions,
     }),
-    [transactions, getTotalAmount, isLoading, isSuccess, isError],
+    [
+      transactions,
+      getTotalAmount,
+      isLoading,
+      isSuccess,
+      isError,
+      createTransaction,
+      getTransactions,
+    ],
   );
 
   return (
