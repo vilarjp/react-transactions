@@ -14,6 +14,7 @@ export const FormWrapper = styled.form`
 
     ${ErrorMessageStyles.ErrorWrapper} {
       text-align: left;
+      margin-bottom: ${theme.spacings.medium};
     }
 
     ${InputStyles.InputWrapper} {

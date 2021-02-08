@@ -5,6 +5,8 @@ import ErrorMessage from '../../../../components/ErrorMessage';
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
+import { transactionSchema } from './transactionSchema';
+
 import * as SC from './styles';
 
 function TransactionForm({ onSubmit, isLoading, isError }) {
@@ -14,56 +16,53 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
     credit_card_number: '',
     credit_card_expiration_date: '',
     credit_card_cvv: '',
-    amount: '',
+    amount: 0,
   });
   const [errors, setErrors] = useState({});
+  const [validationError, setValidationError] = useState(null);
   const { push } = useHistory();
 
-  const validateForm = () => {
+  const validateForm = async () => {
     let isValid = true;
 
-    Object.entries(state).forEach((value) => {
-      const [keyName, entryValue] = value;
+    try {
+      await transactionSchema.validate(state, { abortEarly: false });
+      setErrors({});
+      setValidationError(null);
+    } catch (e) {
+      isValid = false;
+      setValidationError(e.errors[0]);
+      Object.entries(e.value).forEach((value) => {
+        const [keyName, entryValue] = value;
 
-      const errorKeyName = `${keyName}Error`;
+        const errorKeyName = `${keyName}Error`;
 
-      if (!entryValue) {
-        isValid = false;
-        setErrors((prevState) => ({
-          ...prevState,
-          [errorKeyName]: 'Campo obrigatório',
-        }));
-      } else {
-        setErrors((prevState) => ({
-          ...prevState,
-          [errorKeyName]: '',
-        }));
-      }
-    });
+        if (!entryValue) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [errorKeyName]: 'Campo obrigatório',
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [errorKeyName]: '',
+          }));
+        }
+      });
+    }
 
     return isValid;
-  };
-
-  const formatValuesBeforeSubmit = async () => {
-    const { credit_card_holder_name, ...valuesToFormat } = state;
-
-    Object.entries(valuesToFormat).forEach(([key, value]) => {
-      valuesToFormat[key] = value.replace(/\D/g, '');
-    });
-
-    const response = await onSubmit({
-      ...valuesToFormat,
-      credit_card_holder_name,
-    });
-
-    if (response) push('/');
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (validateForm()) {
-      formatValuesBeforeSubmit();
+    if (await validateForm()) {
+      const response = await onSubmit({
+        ...state,
+        amount: parseInt(state.amount),
+      });
+      if (response) push('/');
     }
   };
 
@@ -87,7 +86,7 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
             setState((prevState) => ({ ...prevState, buyer_document: value }))
           }
           placeholder={'CPF'}
-          mask={'CPF'}
+          mask={'999.999.999-99'}
           error={errors.buyer_documentError}
         />
         <Input
@@ -99,7 +98,7 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
             }))
           }
           placeholder={'N° do cartão'}
-          mask={'creditCard'}
+          mask={'9999 9999 9999 9999'}
           error={errors.credit_card_numberError}
         />
         <SC.FormCreditCard>
@@ -112,7 +111,7 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
               }))
             }
             placeholder={'Data de expiração'}
-            mask={'cardExpiration'}
+            mask={'99/99'}
             error={errors.credit_card_expiration_dateError}
           />
           <Input
@@ -124,11 +123,12 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
               }))
             }
             placeholder={'CVV'}
-            mask={'CVV'}
+            mask={'999'}
             error={errors.credit_card_cvvError}
           />
         </SC.FormCreditCard>
         <Input
+          isMoney={true}
           initialValue={state.amount}
           onInput={(value) =>
             setState((prevState) => ({
@@ -139,12 +139,15 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
           placeholder={'Valor da transação'}
           error={errors.amountError}
         />
+
         {isError && (
           <ErrorMessage>
             Ops... ocorreu um erro no nosso sistema :( tente recarregar a pagina
             ou criar a transação novamente
           </ErrorMessage>
         )}
+
+        {validationError && <ErrorMessage>{validationError}</ErrorMessage>}
       </SC.FormContent>
       <Button fullWidth disabled={isLoading}>
         {isLoading ? 'Carregando...' : 'Criar transação'}
