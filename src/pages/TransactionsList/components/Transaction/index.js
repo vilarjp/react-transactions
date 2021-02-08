@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { formatMoney, formatDate } from '../../utils/formatters';
+import { formatMoney, formatDate } from '../../../../utils/formatters';
 import { statusList } from './status';
 
 import * as SC from './styles';

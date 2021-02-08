@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Main } from '../../components/Main';
-import TextAndNumber from '../../components/TextAndNumber';
-import Transaction from '../../components/Transaction';
+import TextAndNumber from './components/TextAndNumber';
+import Transactions from './components/Transactions';
 import IconPlus from '../../components/IconPlus';
 import Button from '../../components/Button';
 import Spinner from '../../components/Spinner';
@@ -41,26 +41,7 @@ const TransactionsList = () => {
 
         {isLoading && <Spinner />}
 
-        {isSuccess && (
-          <SC.TransactionsList>
-            {transactions?.map(
-              ({ credit_card_holder_name, status, date, amount, id }) => (
-                <Transaction
-                  user={credit_card_holder_name}
-                  status={status}
-                  date={date}
-                  amount={amount}
-                  key={id}
-                />
-              ),
-            )}
-            {!transactions?.length && (
-              <p style={{ textAlign: 'center' }} role="status">
-                Nenhuma transação encontrada
-              </p>
-            )}
-          </SC.TransactionsList>
-        )}
+        {isSuccess && <Transactions transactions={transactions} />}
 
         {isError && (
           <ErrorMessage>

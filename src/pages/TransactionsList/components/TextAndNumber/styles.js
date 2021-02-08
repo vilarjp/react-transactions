@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import * as DotsLoadingStyles from '../../components/DotsLoading/styles';
+import * as DotsLoadingStyles from '../../../../components/DotsLoading/styles';
 
 export const TextAndNumberWrapper = styled.div`
   ${({ theme }) => css`

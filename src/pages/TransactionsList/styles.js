@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { Container } from '../../components/Container';
 
-import * as TextAndNumberStyles from '../../components/TextAndNumber/styles';
+import * as TextAndNumberStyles from './components/TextAndNumber/styles';
 import * as SpinnerStyles from '../../components/Spinner/styles';
 
 export const SectionTransactionsList = styled.section`
@@ -24,10 +24,6 @@ export const TransactionsContainer = styled(Container)`
       margin-bottom: ${theme.spacings.xlarge};
     }
   `}
-`;
-
-export const TransactionsList = styled.div`
-  padding-bottom: 80px;
 `;
 
 export const TransactionsFixedContainer = styled(Container)`

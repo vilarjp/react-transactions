@@ -27,7 +27,7 @@ const TransactionsProvider = ({ children }) => {
 
   const getTransactions = useCallback(async () => {
     const response = await run(list());
-    setTransactions(response);
+    setTransactions(response?.reverse());
   }, [run]);
 
   const getTotalAmount = useMemo(() => {

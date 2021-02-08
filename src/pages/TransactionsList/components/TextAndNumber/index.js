@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { formatMoney } from '../../utils/formatters';
+import { formatMoney } from '../../../../utils/formatters';
 
-import DotsLoading from '../DotsLoading';
+import DotsLoading from '../../../../components/DotsLoading';
+
 import * as SC from './styles';
 
 function TextAndNumber({ text, number, isMoney = false, isLoading = false }) {

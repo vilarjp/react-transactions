@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '../../test/render';
-import { formatMoney } from '../../utils/formatters';
+import { render, screen } from '../../../../test/render';
+import { formatMoney } from '../../../../utils/formatters';
 
 import TextAndNumber from '.';
 
