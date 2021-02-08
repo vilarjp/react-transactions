@@ -10,7 +10,10 @@ export default {
       type: 'string',
     },
     status: {
-      type: 'string',
+      control: {
+        type: 'inline-radio',
+        options: ['paid', 'refused'],
+      },
     },
     date: {
       type: 'date',
@@ -25,7 +28,7 @@ export const Default = (args) => <Transaction {...args} />;
 
 Default.args = {
   user: 'João S Silva',
-  status: 'Recusada',
+  status: 'refused',
   date: '2020-11-10T19:43:56.451Z',
   amount: '100',
 };
