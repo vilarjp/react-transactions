@@ -62,9 +62,6 @@ function Input({
           onChange={onCurrencyChange}
           value={value}
           disabled={disabled}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          mask={mask}
           {...props}
         />
       ) : (
@@ -79,7 +76,7 @@ function Input({
           {...props}
         />
       )}
-      {!!error && <small>{error}</small>}
+      {!!error && <small role="alert">{error}</small>}
     </SC.InputWrapper>
   );
 }

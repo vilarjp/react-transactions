@@ -5,15 +5,13 @@
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
+const originalFetch = global.fetch;
+
 beforeAll(() => {
-  jest.spyOn(window, 'fetch').mockImplementation(() =>
-    Promise.resolve({
-      ok: true,
-      json: jest.fn(),
-    }),
-  );
+  const promise = () => new Promise(() => {});
+  global.fetch = promise;
 });
 
-afterEach(() => {
-  jest.clearAllMocks();
+afterAll(() => {
+  global.fetch = originalFetch;
 });
