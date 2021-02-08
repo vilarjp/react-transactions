@@ -6,11 +6,15 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "9.3.2",
     "@testing-library/user-event": "7.1.2",
+    "cpf-cnpj-validator": "^1.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-input-mask": "^2.0.4",
+    "react-intl-currency-input": "^0.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "start": "react-scripts start",
