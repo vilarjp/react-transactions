@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
 
+import InputMask from 'react-input-mask';
+import IntlCurrencyInput from 'react-intl-currency-input';
+
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -30,16 +33,22 @@ export const InputLabel = styled.label`
   `}
 `;
 
-export const InputField = styled.input`
-  ${({ theme }) => css`
-    height: ${theme.sizes.medium};
-    padding: ${theme.spacings.small};
+const inputStyles = ({ theme }) => css`
+  height: ${theme.sizes.medium};
+  padding: ${theme.spacings.small};
 
-    border: 1px solid ${theme.colors.gray};
-    border-radius: ${theme.border.inputRadius};
+  border: 1px solid ${theme.colors.gray};
+  border-radius: ${theme.border.inputRadius};
 
-    font-size: ${theme.font.sizes.medium};
-    color: ${theme.colors.neutralGray};
-    outline: none;
-  `}
+  font-size: ${theme.font.sizes.medium};
+  color: ${theme.colors.neutralGray};
+  outline: none;
+`;
+
+export const InputField = styled(InputMask)`
+  ${inputStyles};
+`;
+
+export const InputCurrency = styled(IntlCurrencyInput)`
+  ${inputStyles};
 `;
