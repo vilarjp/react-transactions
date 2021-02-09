@@ -1,0 +1,308 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[
+  `<TransactionForm /> should display correct error messages when form is empty 1`
+] = `
+Array [
+  <small
+    role="alert"
+  >
+    Campo obrigatório
+  </small>,
+  <small
+    role="alert"
+  >
+    Campo obrigatório
+  </small>,
+  <small
+    role="alert"
+  >
+    Campo obrigatório
+  </small>,
+  <small
+    role="alert"
+  >
+    Campo obrigatório
+  </small>,
+  <small
+    role="alert"
+  >
+    Campo obrigatório
+  </small>,
+  <small
+    role="alert"
+  >
+    Campo obrigatório
+  </small>,
+  .c1 {
+  color: #3F2787;
+  text-align: center;
+  font-weight: 700;
+}
+
+.c2 .c0 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+<div
+    class="c0 c1"
+    role="alert"
+  >
+    O nome deve conter 2 ou mais caracteres
+  </div>,
+]
+`;
+
+exports[`<TransactionForm /> should start with default state 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.c2 small {
+  margin-top: calc(0.5rem / 2);
+  color: #3F2787;
+}
+
+.c3 {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 1;
+  padding: 0 0.5rem;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  background: #FFF;
+  color: #8B8B92;
+}
+
+.c6 {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 1;
+  padding: 0 0.5rem;
+  opacity: 1;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  background: #FFF;
+  color: #8B8B92;
+}
+
+.c4 {
+  height: 4.8rem;
+  padding: 1rem;
+  border: 1px solid #8B8B92;
+  border-radius: 0.6rem;
+  font-size: 1.6rem;
+  color: #595A63;
+  outline: none;
+}
+
+.c7 {
+  height: 4.8rem;
+  padding: 1rem;
+  border: 1px solid #8B8B92;
+  border-radius: 0.6rem;
+  font-size: 1.6rem;
+  color: #595A63;
+  outline: none;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  padding: 1.5rem;
+  background: #3F2787;
+  color: #FFF;
+  border: 0;
+  border-radius: 0.8rem;
+  box-shadow: 0px 4px 6px rgba(112,82,200,0.3);
+  cursor: pointer;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  font-family: Lato,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+  width: 100%;
+}
+
+.c8:hover {
+  opacity: 0.7;
+}
+
+.c0 {
+  padding-top: 9rem;
+  position: relative;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c0 .sc-bdfBwQ {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.c0 .c1 {
+  margin-bottom: 1.5rem;
+}
+
+.c0 button {
+  margin-bottom: 2.5rem;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c5 > .c1:first-child {
+  max-width: 60%;
+  width: 100%;
+}
+
+.c5 > .c1:last-child {
+  max-width: 40%;
+  width: 100%;
+  padding-left: 0.8rem;
+}
+
+<form
+  class="c0"
+  role="form"
+>
+  <div
+    class=""
+  >
+    <div
+      class="c1 c2"
+    >
+      <label
+        class="c3"
+      >
+        Nome da pessoa compradora
+      </label>
+      <input
+        class="c4"
+        placeholder="Nome da pessoa compradora"
+        value=""
+      />
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <label
+        class="c3"
+      >
+        CPF
+      </label>
+      <input
+        class="c4"
+        placeholder="CPF"
+        value=""
+      />
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <label
+        class="c3"
+      >
+        N° do cartão
+      </label>
+      <input
+        class="c4"
+        placeholder="N° do cartão"
+        value=""
+      />
+    </div>
+    <div
+      class="c5"
+    >
+      <div
+        class="c1 c2"
+      >
+        <label
+          class="c3"
+        >
+          Data de expiração
+        </label>
+        <input
+          class="c4"
+          placeholder="Data de expiração"
+          value=""
+        />
+      </div>
+      <div
+        class="c1 c2"
+      >
+        <label
+          class="c3"
+        >
+          CVV
+        </label>
+        <input
+          class="c4"
+          placeholder="CVV"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <label
+        class="c6"
+      >
+        Valor da transação
+      </label>
+      <input
+        class="c7"
+        value="R$0.00"
+      />
+    </div>
+  </div>
+  <button
+    class="c8"
+  >
+    Criar transação
+  </button>
+</form>
+`;
