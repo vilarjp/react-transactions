@@ -67,7 +67,7 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
   };
 
   return (
-    <SC.FormWrapper onSubmit={handleSubmit}>
+    <SC.FormWrapper onSubmit={handleSubmit} role="form">
       <SC.FormContent>
         <Input
           initialValue={state.credit_card_holder_name}
