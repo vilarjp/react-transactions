@@ -20,6 +20,8 @@ O repositório possui CI via GitHub Actions [https://github.com/pagarme-hiring/d
 ## Estrutura do Projeto
 
 ```
+├── .github/                         - configuração de CI do GitHub Actions
+├── cypress/                         - pasta com a estrutura dos testes e2e
 ├── public/                          - arquivos estáticos
 ├── src/                             - pasta com o código-fonte do projeto
   ├── components/                    - componentes reutilizáveis por toda a aplicação
@@ -75,7 +77,7 @@ Para baixar o código basta clonar o repositório com o comando abaixo:
 
 ```
 :~$ cd <pasta do projeto>
-:~$ npm install
+:~$ yarn install
 ```
 
 ### Como executar o projeto?
@@ -83,7 +85,7 @@ Para baixar o código basta clonar o repositório com o comando abaixo:
 ```
 :~$ yarn server - executa o servidor local para chamadas via REST
 :~$ yarn start - executa em modo de desenvolvimento
-:~$ yarn build - faz a construcação do projeto para produção
+:~$ yarn build - faz a construção do projeto para produção
 :~$ yarn test - executa os testes unitários e de integração
 :~$ yarn test:watch - executa os testes unitários e de integração em modo watch
 :~$ yarn test:ci - gera a cobertura dos testes unitários e de integração [src/coverage/lcov-report/index.html]
@@ -97,8 +99,8 @@ Para baixar o código basta clonar o repositório com o comando abaixo:
 ### Como utilizar o projeto?
 
 ```
-1° colocar o servidor local em execução para fornecer as chamadas via REST (~$ yarn server --delay 1000)
-2° executar a aplicação (~$ yarn start) e confirmar a alteração da porta do projeto para a 3001
+1° abrir o terminal e colocar o servidor local em execução para fornecer as chamadas via REST (~$ yarn server --delay 1000)
+2° em outra janela do terminal (importante!) executar a aplicação (~$ yarn start) e confirmar a alteração da porta do projeto para a 3001
 3° acessar http://localhost:3001/
 4° buscar os produtos de acordo com a categoria desejada
 ```
