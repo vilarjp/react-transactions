@@ -24,7 +24,7 @@ export function formatDate(date) {
       const formattedHours = dateToFormat.getHours();
       const formattedMinutes = dateToFormat.getMinutes();
 
-      const timezoneOffSet = dateToFormat / 60;
+      const timezoneOffSet = dateToFormat.getTimezoneOffset() / 60;
       if (timezoneOffSet === 6)
         return `${formattedDDMMYYYY} ${formattedHours - 3}:${formattedMinutes}`;
       return `${formattedDDMMYYYY} ${formattedHours}:${formattedMinutes}`;
