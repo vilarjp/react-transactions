@@ -1,34 +1,142 @@
-# Desafio Front-end
+<h4 align="center">
+  Pagar.me desafio-code-frontend
+</h4>
 
-## Sumário
+O repositório possui CI via GitHub Actions [https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/actions]
+
+![ci](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/ci.png)
+
+## Índice
 
 - [Sobre o desafio](./CHALLENGE.md)
-- [Requisitos](#requisitos)
-- [Instalação](#instalação)
-- [Comandos](#comandos)
+- Estrutura do Projeto
+- Como baixar o projeto?
+- Como rodar o projeto?
+- Como utilizar o projeto?
+- Extras
 
-## Requisitos
+---
 
-- Node v12.18.2 +
-- Yarn v1.22.0 +
+## Estrutura do Projeto
 
-## Instalação
+```
+├── public/                          - arquivos estáticos
+├── src/                             - pasta com o código-fonte do projeto
+  ├── components/                    - componentes reutilizáveis por toda a aplicação
+    ├── MeuComponente/
+      ├── index.js                   - código do component
+      ├── styles.js                  - estilos do component
+      ├── stories.js                 - design system
+      ├── [component].spec.js        - testes do component
+  ├── contexts/                        - components da context-api
+    ├── index.js                       - arquivo para servir como wrapper de todos os contexts
+    ├── [context].js                   - código do context
+    ├── [context].spec.js              - testes do context
+  ├── hooks/                           - custom hooks reutilizáveis por toda a aplicação
+    ├── [hook].js                      - código do hook
+    ├── [hook].spec.js                 - testes do hook
+    ├── components/                    - componentes reutilizáveis por toda a aplicação
+  ├── pages/                           - páginas da aplicação
+    ├── MinhaPagina/
+      ├── components/                  - components específicos da página
+      ├── index.js                     - código da página
+      ├── styles.js                    - estilos da página
+      ├── [pages].spec.js              - testes da página
+  ├── routes/                          - rotas da aplicação
+  ├── services/                        - camada de comunicação externa da aplicação
+    ├── transactions                   - divisão por domínio, ex: transactions, users etc
+    ├── http-client.js                 - cliente com a camada de comunicação externa da aplicação
+  ├── styles/                          - estilos globais e tema do projeto
+  ├── test/                            - configurações e/ou utils para os testes
+  ├── utils/                           - utils reutilizáveis por toda a aplicação
+  ├── App.js                           - wrapper principal da aplicação
+  ├── index.js                         - ponto de partida da renderização do React
+├── .env                               - arquivo para as variáveis ambiente
+├── .eslint.json                       - regras e plugins do ESLint utilizadas no projeto
+├── .prettierrc                        - arquivo com as regras do plugin Prettier
 
-Execute o comando `yarn`.
+```
 
-## Rodando a aplicação
+---
 
-1. Renomeie o arquivo `db.example.json` para `db.json`;
-1. Execute `yarn server` para executar a API;
-1. Execute `yarn start` para rodar a aplicação React.
+## Como baixar o projeto?
 
-## Comandos
+Para baixar o código basta clonar o repositório com o comando abaixo:
 
-O produto deve ser construído na base provida aqui. Para conhecer os comandos disponíveis, visite o `package.json`, mas seguem alguns comandos abaixo:
+```bat
+:~$ git clone https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp
+```
 
-- `yarn start`: executa o projeto
-- `yarn build`: cria o build para produção
-- `yarn test`: executa os testes
-- `yarn lint`: executa as validações de lint na pasta `src`
-- `yarn server`: executa a api para usar com o projeto
-  - Precisa que o arquivo `db.example.json` seja renomeado para `db.json`.
+---
+
+## Principais Comandos
+
+### Instalar dependencias do projeto
+
+```
+:~$ cd <pasta do projeto>
+:~$ npm install
+```
+
+### Como executar o projeto?
+
+```
+:~$ yarn server - executa o servidor local para chamadas via REST
+:~$ yarn start - executa em modo de desenvolvimento
+:~$ yarn build - faz a construcação do projeto para produção
+:~$ yarn test - executa os testes unitários e de integração
+:~$ yarn test:watch - executa os testes unitários e de integração em modo watch
+:~$ yarn test:ci - gera a cobertura dos testes unitários e de integração [src/coverage/lcov-report/index.html]
+:~$ yarn test:cy:open - abre a interface do Cypress para a realização dos testes e2e
+:~$ yarn test:cy:ci - realiza os testes e2e sem o uso da interface
+:~$ yarn storybook - abre o Storybook para a visualização do design system do projeto
+```
+
+---
+
+### Como utilizar o projeto?
+
+```
+1° colocar o servidor local em execução para fornecer as chamadas via REST (~$ yarn server --delay 1000)
+2° executar a aplicação (~$ yarn start) e confirmar a alteração da porta do projeto para a 3001
+3° acessar http://localhost:3001/
+4° buscar os produtos de acordo com a categoria desejada
+```
+
+### Testes
+
+- Testes e2e
+  ![e2e](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/e2e.png)
+
+- Testes unitários e de integração
+  ![unit_integration](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/unit_integration.png)
+
+### Style guide
+
+Para visualizar o style guide desenvolvido para o projeto, basta utilizar o comando:
+
+```
+:~$ yarn storybook
+```
+
+Exemplos:
+
+![storybook_example1](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/storybook_example1.png)
+![storybook_example2](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/storybook_example2.png)
+
+### Tecnologias utilizadas
+
+- React
+- Styled Components
+- Storybook
+- react-error-boundary
+- cpf-cnpj-validator
+- react-input-mask
+- react-intl-currency-input
+- yup
+- husky
+- lint-staged
+- git-commit-msg-linter
+- prettier
+- eslint
+- jest, react testing library e cypress
