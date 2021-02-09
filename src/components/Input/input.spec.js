@@ -97,7 +97,7 @@ describe('<Input />', () => {
     const input = screen.getByRole('textbox');
     userEvent.paste(input, 150);
 
-    expect(input.value).toBe('R$1.50');
+    expect(input.value).toMatchInlineSnapshot(`"R$ 1,50"`);
     expect(onInputSpy).toHaveBeenCalledWith(1.5);
   });
 

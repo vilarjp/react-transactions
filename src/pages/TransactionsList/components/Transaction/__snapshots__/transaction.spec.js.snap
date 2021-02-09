@@ -19,29 +19,15 @@ exports[
   `<Transaction /> should render the paid transaction with correct values 2`
 ] = `
 .c0 {
-  color: #454550;
-}
-
-<p
-  class="c0"
->
-  11/10/2020 16:43
-</p>
-`;
-
-exports[
-  `<Transaction /> should render the paid transaction with correct values 3`
-] = `
-.c0 {
   color: #2B2B2B;
   font-weight: 700;
 }
 
-<span
+<h4
   class="c0"
 >
-  R$123,456,789.00
-</span>
+  R$ 150,00
+</h4>
 `;
 
 exports[

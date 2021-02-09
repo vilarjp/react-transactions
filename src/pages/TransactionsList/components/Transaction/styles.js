@@ -47,7 +47,7 @@ export const TransactionDate = styled.p`
   `}
 `;
 
-export const TransactionAmount = styled.span`
+export const TransactionAmount = styled.h4`
   ${({ theme }) => css`
     color: ${theme.colors.mediumBlack};
     font-weight: ${theme.font.bold};

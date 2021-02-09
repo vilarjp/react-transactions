@@ -54,7 +54,7 @@ describe('<TransactionsCreate />', () => {
     getAllInputs.forEach((input) => {
       expect(input.value).toBe('');
     });
-    expect(amountInput.value).toBe('R$0.00');
+    expect(amountInput.value).toMatchInlineSnapshot(`"R$ 0,00"`);
 
     const emptyFieldsErrors = screen.queryAllByRole('alert');
     expect(emptyFieldsErrors).toHaveLength(0);

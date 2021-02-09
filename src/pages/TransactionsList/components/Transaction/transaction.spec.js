@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '../../../../test/render';
-import { formatMoney, formatDate } from '../../../../utils/formatters';
+import { formatDate } from '../../../../utils/formatters';
 import { statusList } from './status';
 
 import Transaction from '.';
@@ -9,14 +9,14 @@ const paidTransaction = {
   user: 'any_user',
   status: 'paid',
   date: '2020-11-10T19:43:56.451Z',
-  amount: '123456789',
+  amount: '150',
 };
 
 const refusedTransaction = {
   user: 'any_user',
   status: 'refused',
   date: '2020-11-10T19:43:56.451Z',
-  amount: '123456789',
+  amount: '150',
 };
 
 describe('<Transaction />', () => {
@@ -33,15 +33,7 @@ describe('<Transaction />', () => {
     expect(
       screen.getByText(formatDate(paidTransaction.date)),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(formatMoney(paidTransaction.amount)),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(formatDate(paidTransaction.date)),
-    ).toMatchSnapshot();
-    expect(
-      screen.getByText(formatMoney(paidTransaction.amount)),
-    ).toMatchSnapshot();
+    expect(screen.getByRole('heading', { name: /150,00/i })).toMatchSnapshot();
   });
 
   it('should render the refused transaction with correct values', () => {

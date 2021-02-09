@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '../../../../test/render';
-import { formatMoney } from '../../../../utils/formatters';
 
 import TextAndNumber from '.';
 
@@ -11,7 +10,7 @@ const textWithNumber = {
 
 const textWithMoney = {
   text: 'any_text',
-  number: '24339.46',
+  number: '150',
   isMoney: true,
 };
 
@@ -28,9 +27,7 @@ describe('<TextAndNumber />', () => {
     render(<TextAndNumber {...textWithMoney} />);
 
     expect(screen.getByText(textWithMoney.text)).toBeInTheDocument();
-    expect(
-      screen.getByText(formatMoney(textWithMoney.number)),
-    ).toBeInTheDocument();
+    expect(screen.getByText('R$ 150,00')).toBeInTheDocument();
   });
 
   it('should render loading state', () => {

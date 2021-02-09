@@ -295,7 +295,7 @@ exports[`<TransactionForm /> should start with default state 1`] = `
       </label>
       <input
         class="c7"
-        value="R$0.00"
+        value="R$ 0,00"
       />
     </div>
   </div>

@@ -59,7 +59,7 @@ const fillCVV = (cvv = '123') => {
 };
 
 const fillAmount = (value) => {
-  const amount = screen.getByDisplayValue('R$0.00');
+  const amount = screen.getByDisplayValue('R$ 0,00');
   userEvent.paste(amount, value);
 };
 

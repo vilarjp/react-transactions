@@ -7,7 +7,7 @@ import * as SC from './styles';
 
 function Transaction({ user, status, date, amount }) {
   return (
-    <SC.TransactionWrapper role="transaction ">
+    <SC.TransactionWrapper role="transaction">
       <SC.TransactionTitle>
         <SC.TransactionUser>{user}</SC.TransactionUser>
         <SC.TransactionStatus>{statusList[status] ?? '-'}</SC.TransactionStatus>
