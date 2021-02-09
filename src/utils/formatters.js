@@ -17,12 +17,17 @@ export function formatDate(date) {
 
     if (checkIfDateIsValid) {
       const dateToFormat = new Date(date);
-      const formattedDDMMYYYY = new Intl.DateTimeFormat('pt-BR', {
-        dateStyle: 'short',
-        timeStyle: 'short',
-      }).format(dateToFormat);
+      const formattedDDMMYYYY = new Intl.DateTimeFormat('pt-BR').format(
+        dateToFormat,
+      );
 
-      return formattedDDMMYYYY;
+      const formattedHours = dateToFormat.getHours();
+      const formattedMinutes = dateToFormat.getMinutes();
+
+      const timezoneOffSet = dateToFormat / 60;
+      if (timezoneOffSet === 6)
+        return `${formattedDDMMYYYY} ${formattedHours - 3}:${formattedMinutes}`;
+      return `${formattedDDMMYYYY} ${formattedHours}:${formattedMinutes}`;
     } else {
       throw new Error('Invalid date format');
     }
