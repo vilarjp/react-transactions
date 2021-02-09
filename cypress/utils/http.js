@@ -13,7 +13,7 @@ export const mockOk = (url, method, response) => {
     },
     {
       fixture: response,
-      delay: 50,
+      delay: 500,
     },
   ).as('request');
 };
