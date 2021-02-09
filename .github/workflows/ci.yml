@@ -26,3 +26,16 @@ jobs:
 
       - name: E2E tests
         run: yarn test:cy:ci
+
+  lint:
+    steps:
+      - name: Lint
+        run: yarn lint
+
+  test:
+    steps:
+      - name: Unit and Integration tests
+        run: yarn test:ci
+
+      - name: E2E tests
+        run: yarn test:cy:ci
