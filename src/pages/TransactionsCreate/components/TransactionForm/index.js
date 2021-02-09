@@ -140,14 +140,14 @@ function TransactionForm({ onSubmit, isLoading, isError }) {
           error={errors.amountError}
         />
 
+        {validationError && <ErrorMessage>{validationError}</ErrorMessage>}
+
         {isError && (
           <ErrorMessage>
             Ops... ocorreu um erro no nosso sistema :( tente recarregar a pagina
             ou criar a transação novamente
           </ErrorMessage>
         )}
-
-        {validationError && <ErrorMessage>{validationError}</ErrorMessage>}
       </SC.FormContent>
       <Button fullWidth disabled={isLoading}>
         {isLoading ? 'Carregando...' : 'Criar transação'}
