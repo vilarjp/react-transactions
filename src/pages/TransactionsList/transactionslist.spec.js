@@ -33,6 +33,10 @@ const renderPage = async () => {
 };
 
 describe('<TransactionsList />', () => {
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should render loading state on start', async () => {
     mockedHook = {
       ...mockedHook,
@@ -162,5 +166,15 @@ describe('<TransactionsList />', () => {
     userEvent.click(createTransactionButton);
 
     expect(window.location.href).toContain('/create');
+  });
+
+  it('should throw error if TransactionsProvider is not provided', () => {
+    jest.spyOn(global.console, 'error').mockImplementation();
+
+    expect(() =>
+      render(<TransactionsList />),
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"useTransactions must be used within a TransactionsProvider"`,
+    );
   });
 });
