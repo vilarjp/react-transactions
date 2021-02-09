@@ -26,18 +26,3 @@ jobs:
 
       - name: E2E tests
         run: yarn test:cy:ci
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Lint
-        run: yarn lint
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Unit and Integration tests
-        run: yarn test:ci
-
-      - name: E2E tests
-        run: yarn test:cy:ci
