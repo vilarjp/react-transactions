@@ -1,0 +1,11 @@
+{
+  "amount": 2000,
+  "buyer_document": "01067205039",
+  "credit_card_cvv": "1234",
+  "credit_card_expiration_date": "0128",
+  "credit_card_holder_name": "João",
+  "credit_card_number": "1234123412341234",
+  "date": "2020-11-10T19:43:56.451Z",
+  "id": 4,
+  "status": "paid"
+}
