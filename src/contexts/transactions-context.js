@@ -19,7 +19,7 @@ const TransactionsProvider = ({ children }) => {
   const createTransaction = useCallback(
     async (transaction) => {
       const response = await run(create(transaction));
-      setTransactions((prevState) => [...prevState, response]);
+      setTransactions((prevState) => [response, ...prevState]);
       return response;
     },
     [run],
