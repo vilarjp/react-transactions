@@ -37,9 +37,10 @@ describe('<Button />', () => {
   it('should render with disabled property', () => {
     renderButton({ disabled: true });
 
-    expect(
-      screen.getByRole('button', { name: /test button/i }),
-    ).toHaveStyleRule('cursor', 'not-allowed', {
+    const button = screen.getByRole('button', { name: /test button/i });
+
+    expect(button).toHaveAttribute('disabled');
+    expect(button).toHaveStyleRule('cursor', 'not-allowed', {
       modifier: ':disabled',
     });
   });
