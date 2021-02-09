@@ -10,6 +10,39 @@
       "date": "2020-11-10T19:43:56.451Z",
       "id": 1,
       "status": "paid"
+    },
+    {
+      "credit_card_holder_name": "Fulano",
+      "buyer_document": "55476936009",
+      "credit_card_number": "1234123412341234",
+      "credit_card_expiration_date": "0528",
+      "credit_card_cvv": "123",
+      "amount": 3000,
+      "status": "paid",
+      "date": "2021-02-09T23:05:25.726Z",
+      "id": 2
+    },
+    {
+      "credit_card_holder_name": "Paulo",
+      "buyer_document": "55476936009",
+      "credit_card_number": "1234123412341234",
+      "credit_card_expiration_date": "9999",
+      "credit_card_cvv": "123",
+      "amount": 500,
+      "status": "paid",
+      "date": "2021-02-09T23:05:56.920Z",
+      "id": 3
+    },
+    {
+      "credit_card_holder_name": "Zé",
+      "buyer_document": "55476936009",
+      "credit_card_number": "5616516516516516",
+      "credit_card_expiration_date": "1161",
+      "credit_card_cvv": "165",
+      "amount": 1500,
+      "status": "refused",
+      "date": "2021-02-09T23:06:16.023Z",
+      "id": 4
     }
   ]
 }

@@ -126,6 +126,14 @@ Exemplos:
 ![storybook_example1](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/storybook_example1.png)
 ![storybook_example2](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/storybook_example2.png)
 
+### Imagens da aplicação
+
+![app1](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app1.png)
+![app2](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app2.png)
+![app3](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app3.png)
+![app4](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app4.png)
+![app5](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app5.png)
+
 ### Tecnologias utilizadas
 
 - React
