@@ -2,7 +2,7 @@
   Pagar.me desafio-code-frontend
 </h4>
 
-O repositório possui CI via GitHub Actions [https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/actions]
+O repositório possui CI via GitHub Actions [https://github.com/vilarjp/pagarme-code-challenge/actions]
 
 ![ci](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/ci.png)
 
