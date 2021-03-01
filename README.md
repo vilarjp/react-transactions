@@ -1,10 +1,10 @@
 <h4 align="center">
-  Pagar.me desafio-code-frontend
+ React Transactions
 </h4>
 
-O repositório possui CI via GitHub Actions [https://github.com/vilarjp/pagarme-code-challenge/actions]
+O repositório possui CI via GitHub Actions [https://github.com/vilarjp/react-transactions/actions]
 
-![ci](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/ci.png)
+![ci](https://github.com/vilarjp/react-transactions/blob/main/public/assets/ci.png)
 
 ## Índice
 
@@ -66,7 +66,7 @@ O repositório possui CI via GitHub Actions [https://github.com/vilarjp/pagarme-
 Para baixar o código basta clonar o repositório com o comando abaixo:
 
 ```bat
-:~$ git clone https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp
+:~$ git clone https://github.com/vilarjp/react-transactions
 ```
 
 ---
@@ -102,16 +102,15 @@ Para baixar o código basta clonar o repositório com o comando abaixo:
 1° abrir o terminal e colocar o servidor local em execução para fornecer as chamadas via REST (~$ yarn server --delay 1000)
 2° em outra janela do terminal (importante!) executar a aplicação (~$ yarn start) e confirmar a alteração da porta do projeto para a 3001
 3° acessar http://localhost:3001/
-4° buscar os produtos de acordo com a categoria desejada
 ```
 
 ### Testes
 
 - Testes e2e
-  ![e2e](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/e2e.png)
+  ![e2e](https://github.com/vilarjp/react-transactions/blob/main/public/assets/e2e.png)
 
 - Testes unitários e de integração
-  ![unit_integration](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/unit_integration.png)
+  ![unit_integration](https://github.com/vilarjp/react-transactions/blob/main/public/assets/unit_integration.png)
 
 ### Style guide
 
@@ -123,16 +122,16 @@ Para visualizar o style guide desenvolvido para o projeto, basta utilizar o coma
 
 Exemplos:
 
-![storybook_example1](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/storybook_example1.png)
-![storybook_example2](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/storybook_example2.png)
+![storybook_example1](https://github.com/vilarjp/react-transactions/blob/main/public/assets/storybook_example1.png)
+![storybook_example2](https://github.com/vilarjp/react-transactions/blob/main/public/assets/storybook_example2.png)
 
 ### Imagens da aplicação
 
-![app1](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app1.png)
-![app2](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app2.png)
-![app3](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app3.png)
-![app4](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app4.png)
-![app5](https://github.com/pagarme-hiring/desafio-code-frontend-vilarjp/blob/main/public/assets/app5.png)
+![app1](https://github.com/vilarjp/react-transactions/blob/main/public/assets/app1.png)
+![app2](https://github.com/vilarjp/react-transactions/blob/main/public/assets/app2.png)
+![app3](https://github.com/vilarjp/react-transactions/blob/main/public/assets/app3.png)
+![app4](https://github.com/vilarjp/react-transactions/blob/main/public/assets/app4.png)
+![app5](https://github.com/vilarjp/react-transactions/blob/main/public/assets/app5.png)
 
 ### Tecnologias utilizadas
 
